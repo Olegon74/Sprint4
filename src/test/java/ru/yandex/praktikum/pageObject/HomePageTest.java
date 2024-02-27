@@ -1,6 +1,6 @@
 package ru.yandex.praktikum.pageObject;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+//import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -41,15 +41,15 @@ public class HomePageTest {
 
     @Before
     public void startUp() {
-        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.get(site);
     }
 
     @After
     public void teardown() {
-        driver = new ChromeDriver();
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 
     @Test

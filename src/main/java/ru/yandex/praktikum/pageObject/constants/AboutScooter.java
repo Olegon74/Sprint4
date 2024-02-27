@@ -9,8 +9,7 @@ import static ru.yandex.praktikum.pageObject.constants.ScooterColours.*;
 
 
 public class AboutScooter {
-    //public static final By BLACK = By.id("black");
-    //public static final By GREY = By.id("grey");
+
     WebDriver driver;
     private final By rentHeader = By.xpath(".//div[@class='Order_Content__bmtHS']");
     private final By date = By.xpath(".//input[@placeholder='* Когда привезти самокат']");

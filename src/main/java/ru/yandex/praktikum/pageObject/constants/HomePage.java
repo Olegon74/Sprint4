@@ -18,7 +18,7 @@ public class HomePage {
     private final By homeHeader = By.xpath(".//div[@class='Home_FirstPart__3g6vG']");
     private final By upOrderButton = By.xpath(".//div[@class='Header_Nav__AGCXC']/button[@class='Button_Button__ra12g']");
 
-    private final By downOrderButton = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
+    private final By downOrderButton = By.xpath(".//div[@class='Home_FinishButton__1_cWm']/button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
     private final By questionsHeader = By.className("Home_FourPart__1uthg");
 
     public HomePage(WebDriver driver) {
@@ -33,6 +33,8 @@ public class HomePage {
         ));
         return this;
     }
+    //метод ожидания что нижняя кнопка Заказать стала кликабельна
+
 
     //метод ожидания загрузки ответа на вопрос
     public void waitLoadAfterClickQuestion(By accordionLabel) {
