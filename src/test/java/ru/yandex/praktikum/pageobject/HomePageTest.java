@@ -1,6 +1,5 @@
-package ru.yandex.praktikum.pageObject;
+package ru.yandex.praktikum.pageobject;
 
-//import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,15 +8,16 @@ import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import ru.yandex.praktikum.pageObject.constants.HomePage;
+import ru.yandex.praktikum.pageobject.constants.HomePage;
+import ru.yandex.praktikum.pageobject.constants.UrlConstants;
+
 
 import static org.junit.Assert.assertEquals;
-import static ru.yandex.praktikum.pageObject.constants.HomePageConstants.*;
+import static ru.yandex.praktikum.pageobject.constants.HomePageConstants.*;
 
 @RunWith(Parameterized.class)
 public class HomePageTest {
     private WebDriver driver;
-    private final String site = "https://qa-scooter.praktikum-services.ru/";
     private final By question;
     private final By answer;
     private final By labelResult;
@@ -33,8 +33,14 @@ public class HomePageTest {
     @Parameterized.Parameters
     public static Object[][] getParameters() {
         return new Object[][]{
-                {QUESTION_32, ANSWER_32, ITEM_ANSWER_32, TEXT_ANSWER_32},
-                {QUESTION_33, ANSWER_33, ITEM_ANSWER_33, TEXT_ANSWER_33},
+                {QUESTION_0, ANSWER_0, ITEM_ANSWER_0, TEXT_ANSWER_0},
+                {QUESTION_1, ANSWER_1, ITEM_ANSWER_1, TEXT_ANSWER_1},
+                {QUESTION_2, ANSWER_2, ITEM_ANSWER_2, TEXT_ANSWER_2},
+                {QUESTION_3, ANSWER_3, ITEM_ANSWER_3, TEXT_ANSWER_3},
+                {QUESTION_4, ANSWER_4, ITEM_ANSWER_4, TEXT_ANSWER_4},
+                {QUESTION_5, ANSWER_5, ITEM_ANSWER_5, TEXT_ANSWER_5},
+                {QUESTION_6, ANSWER_6, ITEM_ANSWER_6, TEXT_ANSWER_6},
+                {QUESTION_7, ANSWER_7, ITEM_ANSWER_7, TEXT_ANSWER_7},
 
         };
     }
@@ -42,7 +48,7 @@ public class HomePageTest {
     @Before
     public void startUp() {
         driver = new ChromeDriver();
-        driver.get(site);
+        driver.get(UrlConstants.URL);
     }
 
     @After

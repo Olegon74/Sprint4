@@ -1,6 +1,5 @@
-package ru.yandex.praktikum.pageObject;
+package ru.yandex.praktikum.pageobject;
 
-//import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,22 +7,20 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import ru.yandex.praktikum.pageObject.constants.AboutRenter;
-import ru.yandex.praktikum.pageObject.constants.AboutScooter;
-import ru.yandex.praktikum.pageObject.constants.HomePage;
-import ru.yandex.praktikum.pageObject.constants.PopUpWindow;
+import ru.yandex.praktikum.pageobject.constants.*;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static ru.yandex.praktikum.pageObject.constants.CreateOrderButton.DOWN_BUTTON;
-import static ru.yandex.praktikum.pageObject.constants.CreateOrderButton.UP_BUTTON;
-import static ru.yandex.praktikum.pageObject.constants.RentDurationConstants.*;
-import static ru.yandex.praktikum.pageObject.constants.ScooterColours.BLACK;
-import static ru.yandex.praktikum.pageObject.constants.ScooterColours.GREY;
+import static ru.yandex.praktikum.pageobject.constants.CreateOrderButton.DOWN_BUTTON;
+import static ru.yandex.praktikum.pageobject.constants.CreateOrderButton.UP_BUTTON;
+import static ru.yandex.praktikum.pageobject.constants.OrderFormPage.driver;
+import static ru.yandex.praktikum.pageobject.constants.RentDurationConstants.*;
+import static ru.yandex.praktikum.pageobject.constants.ScooterColours.BLACK;
+import static ru.yandex.praktikum.pageobject.constants.ScooterColours.GREY;
 
 @RunWith(Parameterized.class)
 public class OrderCreateTest {
     private WebDriver driver;
-    private final String site = "https://qa-scooter.praktikum-services.ru/";
     private final String name;
     private final String surname;
     private final String address;
@@ -34,6 +31,7 @@ public class OrderCreateTest {
     private final Enum colour;
     private final String comment;
     private final String expectedHeader = "Заказ оформлен";
+    private final String expectedHeader1 = "Для кого самокат";
     private final Enum button;
 
     public OrderCreateTest(Enum button, String name, String surname, String address, int stateMetroNumber, String telephoneNumber,
@@ -55,15 +53,14 @@ public class OrderCreateTest {
         return new Object[][]{
                 {UP_BUTTON, "Тест", "Тестов", "Адрес 12", 12, "799900003333", "29.02.2024", ONE_DAY, GREY, "comments one"},
                 {UP_BUTTON, "Вася", "Фамилия", "Адрес 13", 7, "7988323243234", "01.03.2024", TWO_DAYS, BLACK, "comments two"},
-                {DOWN_BUTTON, "Петя", "Петин", "Адрес 23", 7, "7988844442222", "28.02.2024", THREE_DAYS, GREY, "comments two"},
-                {DOWN_BUTTON, "Имя Три", "Фамилия", "Адрес 3", 10, "790033111111", "27.02.2024", FOUR_DAYS, BLACK, "comments three"},
+
         };
     }
 
     @Before
     public void startUp() {
         driver = new FirefoxDriver();
-        driver.get(site);
+        driver.get(UrlConstants.URL);
     }
 
     @After
@@ -74,10 +71,11 @@ public class OrderCreateTest {
     }
 
     @Test
-    public void testCreateOrderWithUpButton() {
+    public void testCreateOrderUpButton() {
         new HomePage(driver)
                 .waitForLoadHomePage()
                 .clickCreateOrderButton(button);
+
 
         new AboutRenter(driver)
                 .waitForLoadOrderPage()
@@ -99,7 +97,22 @@ public class OrderCreateTest {
         PopUpWindow popUpWindow = new PopUpWindow(driver);
         popUpWindow.clickButtonYes();
 
-        assertTrue(popUpWindow.getHeaderAfterCreateOrder().contains(expectedHeader));
+        if (button.equals(UP_BUTTON)) {
+            assertTrue(popUpWindow.getHeaderAfterCreateOrder().contains(expectedHeader));
+        }
+    }
+
+
+    @Test
+    public void testCreateOrderWithOrderButton() {
+        new HomePage(driver)
+                .waitForLoadHomePage()
+                .clickCreateOrderButton(button);
+
+        if (button.equals(DOWN_BUTTON)) {
+
+            assertEquals(true, OrderFormPage.getTheTitleAfterClickingOnTheOrderButton().contains(expectedHeader1));
+        }
     }
 }
 

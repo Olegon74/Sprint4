@@ -1,11 +1,11 @@
-package ru.yandex.praktikum.pageObject.constants;
+package ru.yandex.praktikum.pageobject.constants;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static ru.yandex.praktikum.pageObject.constants.ScooterColours.*;
+import static ru.yandex.praktikum.pageobject.constants.ScooterColours.*;
 
 
 public class AboutScooter {

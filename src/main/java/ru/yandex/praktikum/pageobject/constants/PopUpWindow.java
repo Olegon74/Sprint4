@@ -1,4 +1,4 @@
-package ru.yandex.praktikum.pageObject.constants;
+package ru.yandex.praktikum.pageobject.constants;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +11,7 @@ public class PopUpWindow {
     private final By buttonYes = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Да']");
 
     public PopUpWindow(WebDriver driver) {
+
         this.driver = driver;
     }
     public void clickButtonYes() {

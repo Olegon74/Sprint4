@@ -1,4 +1,4 @@
-package ru.yandex.praktikum.pageObject.constants;
+package ru.yandex.praktikum.pageobject.constants;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -15,7 +15,7 @@ public class AboutRenter {
     private final By stateMetro = By.xpath(".//input[@class='select-search__input']");
     private final By telephone = By.xpath(".//input[@placeholder='* Телефон: на него позвонит курьер']");
     private final By buttonNext = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
-    private final String nameStateMetro = ".//button[@value='%s']"; //String.valueOf(By.xpath(".//input[@value='Бульвар Рокоссовского']"))
+    private final String nameStateMetro = ".//button[@value='%s']";
 
     public AboutRenter(WebDriver driver) {
         this.driver = driver;
