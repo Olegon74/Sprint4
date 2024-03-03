@@ -13,7 +13,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static ru.yandex.praktikum.pageobject.constants.CreateOrderButton.DOWN_BUTTON;
 import static ru.yandex.praktikum.pageobject.constants.CreateOrderButton.UP_BUTTON;
-import static ru.yandex.praktikum.pageobject.constants.OrderFormPage.driver;
 import static ru.yandex.praktikum.pageobject.constants.RentDurationConstants.*;
 import static ru.yandex.praktikum.pageobject.constants.ScooterColours.BLACK;
 import static ru.yandex.praktikum.pageobject.constants.ScooterColours.GREY;
@@ -31,7 +30,7 @@ public class OrderCreateTest {
     private final Enum colour;
     private final String comment;
     private final String expectedHeader = "Заказ оформлен";
-    private final String expectedHeader1 = "Для кого самокат";
+    private final String expectedFormTitle = "Для кого самокат";
     private final Enum button;
 
     public OrderCreateTest(Enum button, String name, String surname, String address, int stateMetroNumber, String telephoneNumber,
@@ -109,11 +108,11 @@ public class OrderCreateTest {
                 .waitForLoadHomePage()
                 .clickCreateOrderButton(button);
 
-        if (button.equals(DOWN_BUTTON)) {
-
-            assertEquals(true, OrderFormPage.getTheTitleAfterClickingOnTheOrderButton().contains(expectedHeader1));
+        OrderFormPage orderFormPage = new OrderFormPage(driver); // Создаем экземпляр OrderFormPage
+        String title = orderFormPage.getTheTitleAfterClickingOnTheOrderButton(); // Вызываем метод у экземпляра
+        assertTrue(title.contains(expectedFormTitle));
         }
     }
-}
+
 
 
