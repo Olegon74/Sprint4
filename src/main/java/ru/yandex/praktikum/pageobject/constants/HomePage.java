@@ -17,7 +17,7 @@ public class HomePage {
     private final By homeHeader = By.xpath(".//div[@class='Home_FirstPart__3g6vG']");
     private final By upOrderButton = By.xpath(".//div[@class='Header_Nav__AGCXC']/button[@class='Button_Button__ra12g']");
 
-    private final By downOrderButton = By.xpath(".//button[@class='Button_Button__ra12g Button_UltraBig__UU3Lp']");
+    private final By downOrderButton = By.xpath(".//button[@class='Button_Button__ra12g Button_UltraBig__UU3Lp']"); //.//button[@class='Button_Button__ra12g Button_UltraBig__UU3Lp']"
     private final By questionsHeader = By.className("Home_FourPart__1uthg");
 
     public HomePage(WebDriver driver) {
@@ -64,14 +64,18 @@ public class HomePage {
     }
 
 
-    public void clickCreateOrderButton(Enum button) {
+    public void сlickTheOrderOneButton(Enum button) {
         if (button.equals(UP_BUTTON)) {
             clickUpOrderButton();
-        } else if (button.equals(DOWN_BUTTON)) {
+        }
+    }
+    public void clickTheOrderTwoButton(Enum button) {
+        if (button.equals(DOWN_BUTTON)) {
             scrollToDownOrderButton();
             clickDownOrderButton();
         }
     }
+
 
     public HomePage clickQuestion(By question) {
         new WebDriverWait(driver, 10)

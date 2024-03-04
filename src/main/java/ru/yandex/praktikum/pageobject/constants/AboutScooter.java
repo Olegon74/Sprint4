@@ -57,6 +57,7 @@ public class AboutScooter {
     }
 
     public void clickButtonCreateOrder() {
+
         driver.findElement(createOrderButton).click();
     }
 }

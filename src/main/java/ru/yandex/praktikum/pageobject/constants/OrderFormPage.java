@@ -4,10 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
 public class OrderFormPage {
     WebDriver driver;
     private static final By TITLE_OF_THE_ORDER_FORM = By.xpath(".//div[@class='Order_Header__BZXOb' and text()='Для кого самокат']");
     public OrderFormPage(WebDriver driver) {
+
         this.driver = driver;
     }
 
