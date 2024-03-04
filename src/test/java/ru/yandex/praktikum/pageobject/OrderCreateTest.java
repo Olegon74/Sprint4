@@ -31,7 +31,7 @@ public class OrderCreateTest {
     private final String comment;
     private final String expectedHeader = "Заказ оформлен";
     private final String expectedFormTitle = "Для кого самокат";
-    private final Enum git button;
+    private final Enum button;
 
     public OrderCreateTest(Enum button, String name, String surname, String address, int stateMetroNumber, String telephoneNumber,
                            String date, String duration, Enum colour, String comment) {
@@ -106,7 +106,7 @@ public class OrderCreateTest {
     public void testCreateOrderWithOrderButton() {
         new HomePage(driver)
                 .waitForLoadHomePage()
-                .clickTheOrderTwoButton(button);
+                .clickTheOrderTwoButton();
 
         OrderFormPage orderFormPage = new OrderFormPage(driver); // Создаем экземпляр OrderFormPage
          if (button.equals(DOWN_BUTTON)) {

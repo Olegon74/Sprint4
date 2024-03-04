@@ -69,8 +69,8 @@ public class HomePage {
             clickUpOrderButton();
         }
     }
-    public void clickTheOrderTwoButton(Enum button) {
-        if (button.equals(DOWN_BUTTON)) {
+    public void clickTheOrderTwoButton() {
+        if (equals(DOWN_BUTTON)) {
             scrollToDownOrderButton();
             clickDownOrderButton();
         }
