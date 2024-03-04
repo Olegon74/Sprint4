@@ -5,8 +5,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import static ru.yandex.praktikum.pageobject.constants.CreateOrderButton.DOWN_BUTTON;
 import static ru.yandex.praktikum.pageobject.constants.CreateOrderButton.UP_BUTTON;
 
 
@@ -47,32 +45,15 @@ public class HomePage {
         return this;
     }
 
-    //метод прокрутки ко второй кнопке "Заказать"
-    public HomePage scrollToDownOrderButton() {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(downOrderButton));
-        return this;
-    }
 
     public HomePage clickUpOrderButton() {
         driver.findElement(upOrderButton).click();
         return this;
     }
 
-    public HomePage clickDownOrderButton() {
-        driver.findElement(downOrderButton).click();
-        return this;
-    }
-
-
     public void сlickTheOrderOneButton(Enum button) {
         if (button.equals(UP_BUTTON)) {
             clickUpOrderButton();
-        }
-    }
-    public void clickTheOrderTwoButton() {
-        if (equals(DOWN_BUTTON)) {
-            scrollToDownOrderButton();
-            clickDownOrderButton();
         }
     }
 

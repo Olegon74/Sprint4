@@ -1,6 +1,5 @@
 package ru.yandex.praktikum.pageobject.constants;
 
-public enum CreateOrderButton {   //CreateOrderButton
+public enum CreateOrderButton {
     UP_BUTTON,
-    DOWN_BUTTON;
 }

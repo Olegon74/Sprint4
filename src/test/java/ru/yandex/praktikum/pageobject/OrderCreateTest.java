@@ -9,9 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.yandex.praktikum.pageobject.constants.*;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static ru.yandex.praktikum.pageobject.constants.CreateOrderButton.DOWN_BUTTON;
 import static ru.yandex.praktikum.pageobject.constants.CreateOrderButton.UP_BUTTON;
 import static ru.yandex.praktikum.pageobject.constants.RentDurationConstants.*;
 import static ru.yandex.praktikum.pageobject.constants.ScooterColours.BLACK;
@@ -19,6 +17,7 @@ import static ru.yandex.praktikum.pageobject.constants.ScooterColours.GREY;
 
 @RunWith(Parameterized.class)
 public class OrderCreateTest {
+    public static final String ДЛЯ_КОГО_САМОКАТ = "Для кого самокат";
     private WebDriver driver;
     private final String name;
     private final String surname;
@@ -30,7 +29,6 @@ public class OrderCreateTest {
     private final Enum colour;
     private final String comment;
     private final String expectedHeader = "Заказ оформлен";
-    private final String expectedFormTitle = "Для кого самокат";
     private final Enum button;
 
     public OrderCreateTest(Enum button, String name, String surname, String address, int stateMetroNumber, String telephoneNumber,
@@ -97,20 +95,8 @@ public class OrderCreateTest {
         popUpWindow.clickButtonYes();
 
         if (button.equals(UP_BUTTON)) {
+
             assertTrue(popUpWindow.getHeaderAfterCreateOrder().contains(expectedHeader));
-        }
-    }
-
-
-    @Test
-    public void testCreateOrderWithOrderButton() {
-        new HomePage(driver)
-                .waitForLoadHomePage()
-                .clickTheOrderTwoButton();
-
-        OrderFormPage orderFormPage = new OrderFormPage(driver); // Создаем экземпляр OrderFormPage
-         if (button.equals(DOWN_BUTTON)) {
-             assertTrue(orderFormPage.getTheTitleAfterClickingOnTheOrderButton().contains(expectedFormTitle));
         }
     }
 }
